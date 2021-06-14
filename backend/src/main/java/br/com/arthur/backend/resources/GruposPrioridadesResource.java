@@ -26,21 +26,6 @@ public class GruposPrioridadesResource {
 		return gruposPrioridadesRepository.findAll();
 	}
 	
-	@PostMapping
-	public GruposPrioridades cadastrarGrupoPrioridade(@RequestBody GruposPrioridades gruposPrioridades){
-		return gruposPrioridadesRepository.save(gruposPrioridades);
-	}
-	
-	@PutMapping("/{codigo}")
-	public GruposPrioridades atualizar(@PathVariable("codigo") Long codigo, @RequestBody GruposPrioridades gruposPrioridades){
-		return gruposPrioridadesRepository.findById(codigo).map(
-				record -> {
-					record.setNome(gruposPrioridades.getNome());
-					record.setDescricao(gruposPrioridades.getDescricao());
-					return gruposPrioridadesRepository.save(record);
-				}).orElse(null);
-	}
-	
 	@GetMapping("/{codigo}")
 	public GruposPrioridades buscarPeloCodigo(@PathVariable("codigo") Long codigo){
 		return gruposPrioridadesRepository.findById(codigo).orElse(null);

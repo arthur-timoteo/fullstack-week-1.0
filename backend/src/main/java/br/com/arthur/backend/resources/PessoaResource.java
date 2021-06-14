@@ -41,6 +41,7 @@ public class PessoaResource {
 					record.setIdade(pessoa.getIdade());
 					record.setNome(pessoa.getNome());
 					record.setTelefone(pessoa.getTelefone());
+					record.setIsVacinada(pessoa.getIsVacinada());
 					return pessoaRepository.save(record);
 				}).orElse(null);
 	}

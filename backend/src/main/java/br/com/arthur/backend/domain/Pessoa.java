@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Pessoa {
@@ -17,61 +19,82 @@ public class Pessoa {
 	private String email;
 	private Integer idade;
 	private String dataNascimento;
+	private Boolean isVacinada;
 	
+	@ManyToOne
+	@JoinColumn(name="codigo_grupo_prioridade")
+	private GruposPrioridades grupo;
+
 	public Long getCodigo() {
 		return codigo;
 	}
-	
+
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public String getCpf() {
 		return cpf;
 	}
-	
+
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	
+
 	public String getTelefone() {
 		return telefone;
 	}
-	
+
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public Integer getIdade() {
 		return idade;
 	}
-	
+
 	public void setIdade(Integer idade) {
 		this.idade = idade;
 	}
-	
+
 	public String getDataNascimento() {
 		return dataNascimento;
 	}
-	
+
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	public Boolean getIsVacinada() {
+		return isVacinada;
+	}
+
+	public void setIsVacinada(Boolean isVacinada) {
+		this.isVacinada = isVacinada;
+	}
+
+	public GruposPrioridades getGrupo() {
+		return grupo;
+	}
+
+	public void setGrupo(GruposPrioridades grupo) {
+		this.grupo = grupo;
 	}
 
 	@Override
@@ -82,7 +105,9 @@ public class Pessoa {
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((grupo == null) ? 0 : grupo.hashCode());
 		result = prime * result + ((idade == null) ? 0 : idade.hashCode());
+		result = prime * result + ((isVacinada == null) ? 0 : isVacinada.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
 		return result;
@@ -117,10 +142,20 @@ public class Pessoa {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
+		if (grupo == null) {
+			if (other.grupo != null)
+				return false;
+		} else if (!grupo.equals(other.grupo))
+			return false;
 		if (idade == null) {
 			if (other.idade != null)
 				return false;
 		} else if (!idade.equals(other.idade))
+			return false;
+		if (isVacinada == null) {
+			if (other.isVacinada != null)
+				return false;
+		} else if (!isVacinada.equals(other.isVacinada))
 			return false;
 		if (nome == null) {
 			if (other.nome != null)
@@ -133,5 +168,5 @@ public class Pessoa {
 		} else if (!telefone.equals(other.telefone))
 			return false;
 		return true;
-	}	
+	}
 }
