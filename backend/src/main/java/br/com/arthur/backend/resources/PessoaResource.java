@@ -30,6 +30,8 @@ public class PessoaResource {
 	
 	@PostMapping
 	public Pessoa cadastrarPessoa(@RequestBody Pessoa pessoa){
+		Pessoa novaPessoa = pessoa;
+		novaPessoa.setIsVacinada(false);
 		return pessoaRepository.save(pessoa);
 	}
 	
