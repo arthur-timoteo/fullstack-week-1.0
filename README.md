@@ -24,19 +24,19 @@ This project was developed with the following technologies/libraries:
 - IOS: 14.6
 
 ## Layout
-# Web Application
+### Web Application
 
 <p align="center">
   <img alt="Web Application" src=".github/aplicacao_web.PNG" width="100%">
 </p>
 
-# Mobile Application
+### Mobile Application
 
 <p align="center">
   <img alt="Mobile Application" src=".github/aplicacao_mobile.png" width="100%">
 </p>
 
-# Conceptual database model
+### Conceptual database model
 
 <p align="center">
   <img alt="Conceptual database model" src=".github/banco_de_dados.PNG" width="100%">
